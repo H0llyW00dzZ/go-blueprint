@@ -17,7 +17,6 @@ gives the option to integrate with one of the more popular Go frameworks (and th
 - Integrate with a popular frameworks
 - Focus on the actual code of your application
 
-
 ## Table of Contents
 
 - [Install](#install)
@@ -43,6 +42,18 @@ go install github.com/melkeydev/go-blueprint@latest
 ```
 
 This installs a go binary that will automatically bind to your $GOPATH
+
+> if you’re using Zsh, you’ll need to add it manually to `~/.zshrc`.
+
+```bash
+GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+```
+
+don't forget to update
+
+```bash
+source ~/.zshrc
+```
 
 Then in a new terminal run:
 
@@ -94,6 +105,7 @@ Choose from a variety of supported database drivers:
 - [Sqlite](https://github.com/mattn/go-sqlite3)
 - [Mongo](https://go.mongodb.org/mongo-driver)
 - [Redis](https://github.com/redis/go-redis)
+- [ScyllaDB GoCQL](https://github.com/scylladb/gocql)
 
 <a id="advanced-features"></a>
 
@@ -112,8 +124,10 @@ You can now use the `--advanced` flag when running the `create` command to get a
 - CI/CD workflow setup using [Github Actions](https://docs.github.com/en/actions)
 - [Websocket](https://pkg.go.dev/github.com/coder/websocket) sets up a websocket endpoint
 - [Tailwind](https://tailwindcss.com/) css framework
+- Docker configuration for go project
+- [React](https://react.dev/) frontend written in TypeScript, including an example fetch request to the backend
 
-Note: selecting tailwind option automatically selects htmx.
+Note: Selecting Tailwind option will automatically select HTMX unless React is explicitly selected
 
 <a id="blueprint-ui"></a>
 
@@ -154,35 +168,52 @@ go-blueprint create --advanced
 Advanced features can be enabled using the `--feature` flag along with the `--advanced` flag.
 
 HTMX:
+
 ```bash
 go-blueprint create --advanced --feature htmx
 ```
 
 CI/CD workflow:
+
 ```bash
 go-blueprint create --advanced --feature githubaction
 ```
 
 Websocket:
+
 ```bash
 go-blueprint create --advanced --feature websocket
 ```
 
 Tailwind:
+
 ```bash
 go-blueprint create --advanced --feature tailwind
 ```
 
-Or all features at once:
+Docker:
+
 ```bash
-go-blueprint create --name my-project --framework chi --driver mysql --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --git commit
+go-blueprint create --advanced --feature docker
+```
+
+React:
+
+```bash
+go-blueprint create --advanced --feature react
+```
+
+Or all features at once:
+
+```bash
+go-blueprint create --name my-project --framework chi --driver mysql --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker --git commit --feature react
 ```
 
 <p align="center">
   <img src="./public/blueprint_advanced.png" alt="Advanced Options" width="800"/>
 </p>
 
- **Visit [documentation](https://docs.go-blueprint.dev) to learn more about blueprint and its features.**
+**Visit [documentation](https://docs.go-blueprint.dev) to learn more about blueprint and its features.**
 
 <a id="github-stats"></a>
 
@@ -190,7 +221,7 @@ go-blueprint create --name my-project --framework chi --driver mysql --advanced 
   <picture>
     <img src="./public/stats.gif?raw=true" width="45px" style="margin-right: 10px;">
   </picture>
-  Github Stats
+  GitHub Stats
 </h2>
 
 <p align="center">

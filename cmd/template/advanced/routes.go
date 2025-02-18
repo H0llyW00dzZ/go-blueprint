@@ -13,6 +13,18 @@ var baseTemplTemplate []byte
 //go:embed files/tailwind/tailwind.config.js.tmpl
 var tailwindConfigTemplate []byte
 
+//go:embed files/react/tailwind/tailwind.config.js.tmpl
+var reactTailwindConfigTemplate []byte
+
+//go:embed files/react/tailwind/index.css.tmpl
+var inputCssTemplateReact []byte
+
+//go:embed files/react/tailwind/app.tsx.tmpl
+var reactTailwindAppFile []byte
+
+//go:embed files/react/app.tsx.tmpl
+var reactAppFile []byte
+
 //go:embed files/tailwind/input.css.tmpl
 var inputCssTemplate []byte
 
@@ -48,6 +60,9 @@ var chiHtmxTemplRoutes []byte
 
 //go:embed files/htmx/routes/gin.tmpl
 var ginHtmxTemplRoutes []byte
+
+//go:embed files/htmx/imports/gin.tmpl
+var ginHtmxTemplImports []byte
 
 //go:embed files/htmx/routes/gorilla.tmpl
 var gorillaHtmxTemplRoutes []byte
@@ -108,6 +123,22 @@ func TailwindConfigTemplate() []byte {
 	return tailwindConfigTemplate
 }
 
+func ReactTailwindConfigTemplate() []byte {
+	return reactTailwindConfigTemplate
+}
+
+func ReactTailwindAppfile() []byte {
+	return reactTailwindAppFile
+}
+
+func ReactAppfile() []byte {
+	return reactAppFile
+}
+
+func InputCssTemplateReact() []byte {
+	return inputCssTemplateReact
+}
+
 func InputCssTemplate() []byte {
 	return inputCssTemplate
 }
@@ -142,4 +173,8 @@ func FiberHtmxTemplImportsTemplate() []byte {
 
 func FiberWebsocketTemplImportsTemplate() []byte {
 	return fiberWebsocketTemplImports
+}
+
+func GinHtmxTemplImportsTemplate() []byte {
+	return ginHtmxTemplImports
 }

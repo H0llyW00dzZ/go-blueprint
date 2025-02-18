@@ -97,6 +97,19 @@ func GoFmt(appDir string) error {
 	return nil
 }
 
+// GoModReplace runs "go mod edit -replace" in the selected
+// replace_payload e.g: github.com/gocql/gocql=github.com/scylladb/gocql@v1.14.4
+func GoModReplace(appDir string, replace string) error {
+	if err := ExecuteCmd("go",
+		[]string{"mod", "edit", "-replace", replace},
+		appDir,
+	); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func GoTidy(appDir string) error {
 	err := ExecuteCmd("go", []string{"mod", "tidy"}, appDir)
 	if err != nil {
@@ -125,7 +138,7 @@ func CheckGitConfig(key string) (bool, error) {
 // ValidateModuleName returns true if it's a valid module name.
 // It allows any number of / and . characters in between.
 func ValidateModuleName(moduleName string) bool {
-	matched, _ := regexp.Match("^[a-zA-Z0-9_-]+(?:[\\/.][a-zA-Z0-9_-]+)*$", []byte(moduleName))
+	matched, _ := regexp.MatchString("^[a-zA-Z0-9_-]+(?:[\\/.][a-zA-Z0-9_-]+)*$", moduleName)
 	return matched
 }
 
